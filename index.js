@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
+const { allDept, allRoles, allEmployees } = require('./queries/viewQueries');
 
-
+function promptUser() {
 inquirer
     .prompt([
         {
@@ -12,6 +13,32 @@ inquirer
     }
 ]) 
 
-.then((answer) => {
-    
-})
+    .then((response) => {
+        switch (response.choices) {
+            case 'View All Departments':
+                allDept();
+                break;
+
+            case 'View All Roles':
+                allRoles();
+                break;
+
+            case 'View All Employees':
+                allEmployees();
+                break;
+
+                default:
+                    console.log('Invalid Selection');
+        }
+        setTimeout(()=> {
+            promptUser();
+        },500);
+        
+
+    })
+.catch(err => {
+    console.error(err);
+});
+}
+
+promptUser();
