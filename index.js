@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
 const { allDept, allRoles, allEmployees } = require('./queries/viewQueries');
+const { addDept, addRole, addEmployee } = require('./queries/addQueries');
+
 
 function promptUser() {
 inquirer
@@ -27,12 +29,24 @@ inquirer
                 allEmployees();
                 break;
 
-                default:
-                    console.log('Invalid Selection');
+            case 'Add a Department':
+                addDept();
+                break;
+
+            case 'Add a Role':
+                addRole();
+                break;
+
+            case 'Add an Employee':
+                addEmployee();
+                break;
+
+            default:
+                console.log('Invalid Selection');
         }
-        setTimeout(()=> {
-            promptUser();
-        },500);
+        // setTimeout(() => {
+        //     promptUser();
+        // }, 500);
         
 
     })
