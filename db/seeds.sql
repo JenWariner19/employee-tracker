@@ -15,14 +15,14 @@ VALUES ('Email Strategist', 55000, 1),
        ('Human Resources Rep', 60000, 4);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ('Gina', 'Smith', 1, NULL),
-       ('Tony', 'Finch', 1, NULL),
-       ('Heather', 'Anderson', 2, 1),
-       ('Karl', 'Clark', 3, NULL),
-       ('Nelson', 'Lee', 4, 2),
-       ('Lesley', 'Pham', 5, NULL),
-       ('Josh', 'Kirkland', 5, NULL),
-       ('Patrick', 'James', 5, NULL),
-       ('Jill', 'West', 6, 3),
-       ('Marcus', 'Billings', 7, 4),
-       ('Sue', 'Velasquez', 8, NULL);
+VALUES ('Heather', 'Anderson', 2, NULL),
+       ('Gina', 'Smith', 1, 1),
+       ('Tony', 'Finch', 1, 1),
+       ('Nelson', 'Lee', 4, NULL),
+       ('Karl', 'Clark', 3, 4),
+       ('Jill', 'West', 6, NULL),
+       ('Lesley', 'Pham', 5, 6),
+       ('Josh', 'Kirkland', 5, 6),
+       ('Patrick', 'James', 5, 6),
+       ('Marcus', 'Billings', 7, NULL),
+       ('Sue', 'Velasquez', 8, 10);

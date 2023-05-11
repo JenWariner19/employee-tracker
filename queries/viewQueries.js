@@ -7,7 +7,7 @@ const cTable = require('console.table');
             if (err) {
                 console.log(err);
             }
-            console.log('\n');
+            console.log('\nDepartments');
             console.table(results);
             console.log('\n');
         });
@@ -18,7 +18,7 @@ const cTable = require('console.table');
             if (err) {
                 console.log(err);
             }
-            console.log('\n');
+            console.log('\nRoles');
             console.table(results);
             console.log('\n');
         });
@@ -29,7 +29,7 @@ const cTable = require('console.table');
             if (err) {
                 console.log(err);
             }
-            console.log('\n');
+            console.log('\nEmployees');
             console.table(results);
             console.log('\n');
         });
