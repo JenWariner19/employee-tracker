@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const { allDept, allRoles, allEmployees } = require('./queries/viewQueries');
 const { addDept, addRole, addEmployee } = require('./queries/addQueries');
+const { updateEmployee } = require('./queries/updateQuery');
 
 
 function promptUser() {
@@ -39,6 +40,10 @@ inquirer
 
             case 'Add an Employee':
                 addEmployee();
+                break;
+
+            case 'Update an Employee Role':
+                updateEmployee();
                 break;
 
             default:
