@@ -1,8 +1,14 @@
 const inquirer = require('inquirer');
+const db = require('./db/connection');
 const { allDept, allRoles, allEmployees } = require('./queries/viewQueries');
 const { addDept, addRole, addEmployee } = require('./queries/addQueries');
 const { updateEmployee } = require('./queries/updateQuery');
 
+function done() {
+    console.log( "Goodbye!");
+    db.end();
+    process.exit();
+};
 
 function promptUser() {
 inquirer
@@ -11,7 +17,7 @@ inquirer
             type: 'list',
             name: 'choices',
             message: 'What would you like to do?',
-            choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add an Employee', 'Update an Employee Role'],
+            choices: ['View All Departments', 'View All Roles', 'View All Employees', 'Add a Department', 'Add a Role', 'Add an Employee', 'Update an Employee Role', 'Done'],
 
     }
 ]) 
@@ -46,12 +52,16 @@ inquirer
                 updateEmployee();
                 break;
 
+            case 'Done':
+                console.log('Thank you for visiting the Employee Tracker!');
+                done();
+
             default:
                 console.log('Invalid Selection');
         }
-        // setTimeout(() => {
-        //     promptUser();
-        // }, 500);
+        setTimeout(() => {
+            promptUser();
+        }, 10000);
         
 
     })

@@ -19,17 +19,8 @@ function addDept() {
                 if (err) {
                     console.log(err);
                 }
-                console.log('\nNew department added successfully!');
-                db.query('SELECT * FROM department', (err, results) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                    console.log('\n');
-                    console.table(results);
-                    console.log('\n');
-                });
+                console.log(`${data.department} has been added to the database.`);
             });
-
         });
 };
 
@@ -68,20 +59,13 @@ function addRole() {
                         if (err) {
                             console.log(err);
                         }
-                        console.log('\nNew role added successfully!');
-                        db.query('SELECT role.id, role.title, role.salary, department.dept_name AS department_name FROM role JOIN department ON role.department_id = department.id', (err, results) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                            console.log('\n');
-                            console.table(results);
-                            console.log('\n');
-                        });
+                        console.log(`${data.role_title} has been added to the database.`);
+
                     });
 
                 });
-        };
-    })
+        }
+    });
 };
 
 function addEmployee() {
@@ -97,6 +81,8 @@ function addEmployee() {
                     console.log(err);
                 } else {
                     const mgrOptions = results.map(manager => ({ name: manager.manager_name, value: manager.id }));
+                    mgrOptions.push({ name: "None", value: null });
+
                     inquirer
                         .prompt([
                             {
@@ -133,17 +119,8 @@ function addEmployee() {
                                 if (err) {
                                     console.log(err);
                                 }
-                                console.log('\nNew employee added successfully!');
-                                db.query("SELECT employee.id, employee.first_name, employee.last_name, role.title AS job_title, department.dept_name AS department_name, role.salary as salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee manager ON employee.manager_id = manager.id", (err, results) => {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                    console.log('\n');
-                                    console.table(results);
-                                    console.log('\n');
-                                });
+                                console.log(`${data.first_name} ${data.last_name} has been added to the database.`);
                             });
-
                         });
                 }
             });

@@ -36,7 +36,6 @@ function updateEmployee() {
                         ])
 
                         .then((data) => {
-                            console.log(data);
                             const empName = data.employee;
                             const empRole = data.role;
 
@@ -44,18 +43,11 @@ function updateEmployee() {
                                 if (err) {
                                     console.log(err);
                                 }
-                                console.log('\nEmployee successfully updated!');
-                                db.query("SELECT employee.id, employee.first_name, employee.last_name, role.title AS job_title, department.dept_name AS department_name, role.salary as salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee manager ON employee.manager_id = manager.id", (err, results) => {
-                                    if (err) {
-                                        console.log(err);
-                                    }
-                                    console.log('\n');
-                                    console.table(results);
-                                    console.log('\n');
-                                });
-                            });
+                                console.log(`The employee role has been updated.`);
 
+                            });
                         });
+
                 }
             });
         }
