@@ -10,11 +10,11 @@ function updateEmployee() {
         } else {
             const roleOptions = results.map(role => ({ name: role.title, value: role.id }));
 
-            db.query('SELECT CONCAT(first_name, " " , last_name) AS employee_name FROM employee', (err, results) => {
+            db.query('SELECT id, CONCAT(first_name, " " , last_name) AS employee_name FROM employee', (err, results) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    const empOptions = results.map(employee => ({ name: employee.employee_name, value: employee.employee_name }));
+                    const empOptions = results.map(employee => ({ name: employee.employee_name, value: employee.id }));
                     if (empOptions.length === 0) {
                         console.log('No employees found.');
                         return;
