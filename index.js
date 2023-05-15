@@ -61,7 +61,7 @@ inquirer
         }
         setTimeout(() => {
             promptUser();
-        }, 10000);
+        }, 11000);
         
 
     })
